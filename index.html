@@ -4,15 +4,19 @@
 <!-- Published Mar 13, 2026, 10:13 PM UTC -->
 <html lang="pt-BR">
 <head>
-  <style>
-  #framer-badge-container, 
-  .framer-badge,
-  [data-framer-badge-container] {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-</style>
+<script>
+  const removeFramerBadge = () => {
+    const badge = document.querySelector('div[id*="framer-badge"]');
+    if (badge) {
+      badge.remove();
+    }
+  };
+
+  // Executa ao carregar e monitora mudanças no HTML
+  window.addEventListener('load', removeFramerBadge);
+  const observer = new MutationObserver(removeFramerBadge);
+  observer.observe(document.body, { childList: true, subtree: true });
+</script>
 	<meta charset="utf-8">
 	
 	
