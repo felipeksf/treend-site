@@ -5,41 +5,44 @@
 <html lang="pt-br" style="font-size: 115%;">
 <head>	
   <style>
-    /* 1. Limpeza */
+    /* 1. Limpeza de Badge */
     #__framer-badge-container, .framer-badge, [data-framer-badge] {
         display: none !important;
     }
 
-    /* 2. ESCALA INTELIGENTE */
-    html {
-        /* Zoom base para notebooks (Mac 13") */
-        zoom: 1.12 !important; 
-        background-color: #ffffff !important;
-    }
-
-    /* Zoom maior para TVs e Monitores Grandes */
-    @media (min-width: 1400px) {
+    /* 2. AJUSTE PARA DESKTOP (Mac e TV) */
+    @media (min-width: 1024px) {
         html {
-            zoom: 1.25 !important;
+            zoom: 1.12 !important; /* Mac de 13" */
+        }
+        
+        @media (min-width: 1400px) {
+            html { zoom: 1.25 !important; } /* TV e Monitores Grandes */
+        }
+
+        body {
+            margin: 0 auto !important;
+            width: 100vw !important; 
+            overflow-x: hidden !important; 
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 
-    /* 3. O AJUSTE PARA NÃO VAZAR (Fix para o Mac) */
-    body {
-        margin: 0 auto !important;
-        /* Isso aqui impede o corte lateral que você viu no print */
-        width: 100vw !important; 
-        overflow-x: hidden !important; 
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    /* Força o container principal do Framer a se alinhar ao centro */
-    div[data-framer-generated] {
-        margin: 0 auto !important;
-        left: 0 !important;
-        right: 0 !important;
+    /* 3. AJUSTE PARA MOBILE (Corrige o desalinhamento do print) */
+    @media (max-width: 1023px) {
+        html {
+            zoom: 1 !important; /* Reseta o zoom no celular */
+            overflow-x: hidden !important;
+        }
+        body {
+            width: 100% !important;
+            margin: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            overflow-x: hidden !important;
+        }
     }
 </style>
 	<meta charset="utf-8">
