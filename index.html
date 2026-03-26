@@ -4,29 +4,40 @@
 <!-- Published Mar 25, 2026, 2:06 PM UTC -->
 <html lang="pt-br" style="font-size: 115%;">
 <head>	
-<style>
-    /* 1. Remove o Badge do Framer */
+   <style>
+    /* 1. Limpeza de Badge */
     #__framer-badge-container, .framer-badge, [data-framer-badge] {
         display: none !important;
     }
 
-    /* 2. O TRUQUE MÁGICO: Força o navegador a renderizar em 125% */
+    /* 2. ESCALA DINÂMICA: O pulo do gato */
     html {
-        zoom: 1.25 !important; /* Funciona no Chrome, Edge e Safari */
-        -moz-transform: scale(1.25); /* Para o Firefox */
-        -moz-transform-origin: 0 0;
+        /* No Chrome/Mac, isso vai simular o zoom de 125% sem quebrar o layout */
+        zoom: 1.15 !important; 
     }
 
-    /* 3. Ajuste de Centralização */
+    /* Ajuste específico para telas maiores (como sua TV de 32 ou monitores externos) */
+    @media (min-width: 1400px) {
+        html {
+            zoom: 1.25 !important;
+        }
+    }
+
+    /* 3. COMPENSAÇÃO DE CENTRALIZAÇÃO */
     body {
-        width: 80% !important; /* Compensa o ganho de 25% na largura */
         margin: 0 auto !important;
-        background-color: transparent !important;
+        /* Garante que o conteúdo não 'cole' no topo ou nas bordas */
+        display: flex;
+        justify-content: center;
+        background-color: #ffffff !important; 
     }
 
-    /* Garante que o fundo do site acompanhe o zoom */
-    div[data-framer-generated] {
-        margin: 0 auto !important;
+    /* 4. LEITURA DOS TEXTOS */
+    /* Isso força os textos do Framer a terem um respiro maior entre linhas */
+    * {
+        line-height: 1.4 !important;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 </style>
 	<meta charset="utf-8">
