@@ -5,35 +5,34 @@
 <html lang="pt-br" style="font-size: 115%;">
 <head>
 	
- <style>
-    /* 1. Esconde o badge do Framer */
-    #__framer-badge-container,
-    .framer-badge,
-    [data-framer-badge] {
+<style>
+    /* 1. Remove o Badge do Framer */
+    #__framer-badge-container, .framer-badge, [data-framer-badge] {
         display: none !important;
         visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        height: 0 !important;
-        width: 0 !important;
     }
 
-    /* 2. Ajuste Global de Legibilidade (O que você quer) */
+    /* 2. FORÇA BRUTA: Aumenta a base do site */
     html {
-        font-size: 135% !important; /* Aumenta a base de tudo */
+        font-size: 115% !important; /* Aumenta tudo em 15% */
+    }
+
+    /* 3. ATROPELAR: Faz todos os elementos seguirem a nova escala */
+    * {
+        /* Se o Framer fixou algo em 16px, isso transforma em 1.1rem (aprox 20px) */
+        font-size: 1.05em !important; 
+        line-height: 1.5 !important;
+    }
+
+    /* 4. EXCEÇÕES: Mantém ícones e imagens no tamanho original para não deformar */
+    svg, img, i {
+        font-size: unset !important;
     }
 
     body {
-        max-width: 1200px !important; 
-        margin: 0 auto !important; 
-        line-height: 1.6 !important;
-        padding: 0 20px !important;
+        max-width: 1400px !important;
+        margin: 0 auto !important;
         -webkit-font-smoothing: antialiased;
-    }
-
-    /* Força todos os textos a seguirem a escala nova */
-    p, span, div, h1, h2, h3, h4, a {
-        font-size: inherit; 
     }
 </style>
 	<meta charset="utf-8">
