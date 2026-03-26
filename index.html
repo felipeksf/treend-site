@@ -5,9 +5,10 @@
 <html lang="pt-br" style="font-size: 115%;">
 <head>
 	
-  <style>
-    #__framer-badge-container, 
-    .framer-badge, 
+ <style>
+    /* 1. Esconde o badge do Framer */
+    #__framer-badge-container,
+    .framer-badge,
     [data-framer-badge] {
         display: none !important;
         visibility: hidden !important;
@@ -15,17 +16,25 @@
         pointer-events: none !important;
         height: 0 !important;
         width: 0 !important;
-		body {
-    max-width: 1200px;    /* Impede que o site espalhe demais em telas UltraWide */
-    margin: 0 auto;       /* Centraliza o site na tela */
-    line-height: 1.6;     /* Dá espaço entre as linhas de texto */
-    padding: 0 20px;      /* Evita que o conteúdo cole nas bordas do celular */
-    -webkit-font-smoothing: antialiased; /* Deixa a fonte mais nítida */
     }
-		* {
-    font-size: 1.1rem !important; /* Isso força tudo a crescer 10% sobre a base */
-  }
-<style>
+
+    /* 2. Ajuste Global de Legibilidade (O que você quer) */
+    html {
+        font-size: 115% !important; /* Aumenta a base de tudo */
+    }
+
+    body {
+        max-width: 1200px !important; 
+        margin: 0 auto !important; 
+        line-height: 1.6 !important;
+        padding: 0 20px !important;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* Força todos os textos a seguirem a escala nova */
+    p, span, div, h1, h2, h3, h4, a {
+        font-size: inherit; 
+    }
 </style>
 	<meta charset="utf-8">
 	
