@@ -1,152 +1,17 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Treend — O Seu Guia Definitivo de Câmbio</title>
-    <meta name="description" content="Treend - O Seu Guia de Câmbio.">
-    <meta name="author" content="Treend" />
-    <meta name="theme-color" content="#5371FF" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Treend" />
-    <link rel="apple-touch-icon" href="/pwa-192x192.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <meta property="og:title" content="Treend — O Seu Guia Definitivo de Câmbio">
-    <meta name="twitter:title" content="Treend — O Seu Guia Definitivo de Câmbio">
-    <meta property="og:description" content="Treend - O Seu Guia de Câmbio.">
-    <meta name="twitter:description" content="Treend - O Seu Guia de Câmbio.">
-    <link rel="icon" type="image/webp" href="/favicon.webp">
-    <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/8XVg2vdkyrQ5OfhwMeaJrzaBjVP2/social-images/social-1770759345462-treend_logo_bg.png">
-    <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/8XVg2vdkyrQ5OfhwMeaJrzaBjVP2/social-images/social-1770759345462-treend_logo_bg.png">
-
-    <style>
-      html, body, #root {
-        margin: 0;
-        padding: 0;
-      }
-
-      /* Fundo azul apenas em mobile/tablet onde o splash aparece */
-      @media (max-width: 1024px) {
-        html:not(.app-ready),
-        html:not(.app-ready) body,
-        html:not(.app-ready) #root {
-          background: #5371FF !important;
-        }
-      }
-
-      #splash-screen {
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        background: #5371FF;
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.4s ease, visibility 0.4s ease;
-      }
-
-      @media (max-width: 1024px) {
-        #splash-screen {
-          display: flex;
-        }
-      }
-
-      #splash-screen.hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-      }
-
-      .splash-logo {
-        width: 180px;
-        height: auto;
-        -o-object-fit: contain;
-           object-fit: contain;
-        filter: brightness(0) invert(1);
-        animation: logo-in 0.4s ease-out both;
-      }
-
-      @media (min-width: 768px) and (max-width: 1024px) {
-        .splash-logo {
-          width: 220px;
-        }
-      }
-
-      @keyframes logo-in {
-        from { opacity: 0; transform: scale(0.9); }
-        to   { opacity: 1; transform: scale(1); }
-      }
-
-      /* Após o React montar, limpa o fundo azul */
-      html.app-ready,
-      html.app-ready body,
-      html.app-ready #root {
-        background: transparent !important;
-      }
-    </style>
-    <script type="module" crossorigin src="/assets/index-37OTomTM.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/vendor-react-BPVwnPwm.js">
-    <link rel="modulepreload" crossorigin href="/assets/vendor-query-DLzuE18K.js">
-    <link rel="modulepreload" crossorigin href="/assets/vendor-pdf-DcZ1So_n.js">
-    <link rel="modulepreload" crossorigin href="/assets/vendor-supabase-nOMv1ksJ.js">
-    <link rel="modulepreload" crossorigin href="/assets/vendor-radix-CeHqB9F5.js">
-    <link rel="modulepreload" crossorigin href="/assets/vendor-heavy-CE38DqJB.js">
-    <link rel="modulepreload" crossorigin href="/assets/vendor-i18n-D4dBUjij.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-Dg7nE3tq.css">
-  </head>
-  <body>
-    <!-- Splash screen nativo (apenas tablet/mobile) -->
-    <div id="splash-screen">
-      <img class="splash-logo" src="/treend-logo-white.png" alt="Treend" />
-    </div>
-
-    <div id="root"></div>
-
-    <script>
-      // Bloqueia clique direito e atalhos de DevTools/Exibir código-fonte
-      // (desabilitado na landing page /lp para permitir inspeção/cópia do HTML)
-      (function () {
-        var path = (window.location.pathname || '').toLowerCase();
-        if (path === '/lp' || path.startsWith('/lp/')) return;
-
-        document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'F12') { e.preventDefault(); return; }
-          if ((e.ctrlKey || e.metaKey) && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())) { e.preventDefault(); return; }
-          if ((e.ctrlKey || e.metaKey) && e.key.toUpperCase() === 'U') { e.preventDefault(); return; }
-        });
-      })();
-
-
-      // Remove o splash assim que o React terminar de montar
-      window.__hideSplash = function () {
-        var el = document.getElementById('splash-screen');
-        if (el) {
-          el.classList.add('hidden');
-          setTimeout(function () { el.remove(); }, 600);
-        }
-      };
-      // Fallback defensivo: evita tela em branco caso o React não monte
-      setTimeout(function () {
-        var root = document.getElementById('root');
-        var mounted = !!(root && root.childElementCount > 0);
-
-        if (!mounted && root) {
-          root.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:Outfit,system-ui,sans-serif;padding:24px;text-align:center;"><div><p style="margin:0 0 12px 0;color:#1f2937;">Carregamento demorou mais que o esperado.</p><a href="/login" style="color:#5371FF;font-weight:600;">Ir para login</a></div></div>';
-          document.documentElement.classList.add('app-ready');
-        }
-
-        if (typeof window.__hideSplash === 'function') {
-          window.__hideSplash();
-        }
-      }, 6000);
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=https://app.treend.com.br/lp">
+  <link rel="canonical" href="https://app.treend.com.br/lp">
+  <title>Redirecionando...</title>
+  <script>
+    window.location.replace("https://app.treend.com.br/lp");
+  </script>
+</head>
+<body>
+  <p>Redirecionando para
+    <a href="https://app.treend.com.br/lp">app.treend.com.br/lp</a>...
+  </p>
+</body>
 </html>
